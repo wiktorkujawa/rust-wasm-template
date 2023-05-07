@@ -1,0 +1,25 @@
+{
+  "name": "wasm-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "build:wasm":"cargo build --target wasm32-unknown-unknown",
+    "build:wasm-prod": "cargo build --target wasm32-unknown-unknown --release",
+    "build:bind": "wasm-bindgen ./target/wasm32-unknown-unknown/debug/wasm-test.wasm --out-dir public/wasm-test --web",
+    "build:bind-prod": "wasm-bindgen ./target/wasm32-unknown-unknown/release/wasm-test.wasm --out-dir public/wasm-test --web",
+    "build": "yarn build:wasm-prod && yarn build:bind-prod",
+    "build:debug": "yarn build:wasm && yarn build:bind",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
